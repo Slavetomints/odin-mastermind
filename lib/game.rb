@@ -16,7 +16,11 @@ class Game
   def play_game
     puts 'Welcome!'
     @board.show_board
-    @codebreaker.guess_code
+    guess = @codebreaker.guess_code(@code_length)
+    @codemaker.check_guess(guess, @code)
+    if @codemaker.check_guess(guess, @code) == false
+      @board.update_board(guess, @code)
+    end
   end
 end
 

@@ -5,9 +5,14 @@ class Codebreaker
     @name = gets.chomp
   end
 
-  def guess_code
+  def guess_code(code_length)
     puts "Please make a guess #{@name}"
-    i = 0
-    while i <=
+    guess = gets.chomp
+    if guess.length < code_length || guess.length > code_length
+      puts "Your code was too long/short, pease guess again"
+      guess_code
+    else
+      guess = guess.chars
+    end
   end
 end
