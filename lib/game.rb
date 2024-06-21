@@ -11,13 +11,12 @@ class Game
     @codemaker = Codemaker.new(@code_length)
     @codebreaker = Codebreaker.new
     @code = @codemaker.make_code
+    puts 'Welcome!'
+    @board.show_board
   end
 
   def play_game
-    puts 'Welcome!'
-    @board.show_board
     guess = @codebreaker.guess_code(@code_length)
-    @codemaker.check_guess(guess, @code)
     if @codemaker.check_guess(guess, @code) == false
       @board.update_board(guess, @code)
     end
@@ -25,4 +24,7 @@ class Game
 end
 
 game = Game.new
-game.play_game
+String.colors
+loop do
+  game.play_game
+end

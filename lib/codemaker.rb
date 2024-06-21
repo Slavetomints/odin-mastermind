@@ -7,11 +7,12 @@ class Codemaker
   end
 
   def make_code
-    color = %w[red yellow green blue orange]
+    colors = %w[red yellow green blue purple]
     code = []
     @code_length.times do
-      code << color.sample
+      code << colors.sample
     end
+    code
   end
 
   def check_guess(guess, check)
