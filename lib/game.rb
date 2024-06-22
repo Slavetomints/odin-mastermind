@@ -17,14 +17,13 @@ class Game
 
   def play_game
     guess = @codebreaker.guess_code(@code_length)
-    if @codemaker.check_guess(guess, @code) == false
-      @board.update_board(guess, @code)
-    end
+    return unless @codemaker.check_guess(guess, @code) == false
+
+    @board.update_board(guess, @code)
   end
 end
 
 game = Game.new
-String.colors
 loop do
   game.play_game
 end

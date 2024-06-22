@@ -7,7 +7,7 @@ class Codemaker
   end
 
   def make_code
-    colors = %w[red yellow green blue purple]
+    colors = %w[r o g b p]
     code = []
     @code_length.times do
       code << colors.sample
@@ -16,11 +16,9 @@ class Codemaker
   end
 
   def check_guess(guess, check)
-    if guess == check
-      puts "You win!"
-      exit
-    else
-      return false
-    end
+    return false unless guess == check
+
+    puts 'You win!'
+    exit
   end
 end

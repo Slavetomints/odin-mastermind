@@ -22,8 +22,36 @@ class Board
 
   def update_board(guess, code)
     @guesses_left -= 1
-    @guess_board[@guesses_left] = guess
-    @result_board[@guesses_left] = code
-    self.show_board
+    if @guesses_left == 0
+      show_board
+      puts "You loose! The code was #{code}"
+      exit
+    else
+      @guess_board[@guesses_left] = guess
+      @result_board[@guesses_left] = update_results(guess, code)
+      show_board
+    end
+  end
+
+  def update_results(guess, code)
+    result_array = []
+    code.each_with_index do |code_color, code_color_index|
+      puts "\nColor: #{code_color}" 
+      puts "Index: #{code_color_index}"
+
+      guess.each_with_index do |guess_color, guess_color_index|
+        if code_color == guess_color && code_color_index == guess_color_index  
+          result_array << "CC"
+          break
+        elsif code_color == guess_color && code_color_index != guess_color_index
+          result_array << "CW"
+          break
+        else
+          result_array << "WW"
+          break
+        end
+      end
+    end
+    result_array
   end
 end
