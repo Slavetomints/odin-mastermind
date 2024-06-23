@@ -10,7 +10,9 @@ class Codemaker
     colors = %w[r o g b p]
     code = []
     @code_length.times do
-      code << colors.sample
+      insert = colors.sample
+      colors.delete(insert)
+      code << insert
     end
     code
   end

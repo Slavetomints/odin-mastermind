@@ -34,22 +34,36 @@ class Board
   end
 
   def update_results(guess, code)
-    result_array = []
-    code.each_with_index do |code_color, code_color_index|
-      puts "\nColor: #{code_color}" 
-      puts "Index: #{code_color_index}"
+    code_length = code.length
+    result_array = Array.new(code_length, nil)
+    matched_indices = Array.new(code_length, false)
 
-      guess.each_with_index do |guess_color, guess_color_index|
-        if code_color == guess_color && code_color_index == guess_color_index  
-          result_array << "CC"
-          break
-        elsif code_color == guess_color && code_color_index != guess_color_index
+    guess.each_with_index do |guess_color, guess_color_index|
+      if code[guess_color_index] == guess_color
+        result_array.shift
+        result_array << "CC"
+        matched_indices[guess_color_index] = true
+      end
+    end
+  
+    guess.each_with_index do |guess_color, guess_color_index|
+      next if result_array[guess_color_index] == "CC" 
+  
+      code.each_with_index do |code_color, code_color_index|
+        next if matched_indices[code_color_index] 
+  
+        if guess_color == code_color
+          result_array.shift
           result_array << "CW"
-          break
-        else
-          result_array << "WW"
+          matched_indices[code_color_index] = true
           break
         end
+      end
+    end
+
+    result_array.each_with_index do |result, index|
+      if result.nil?
+        result_array[index] = "WW"
       end
     end
     result_array
