@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'colorize'
 
 # contains the logic for the codebreaker
@@ -18,7 +20,7 @@ class Codebreaker
       puts 'Your code was too long/short, pease guess again'.colorize(background: :red)
       guess_code(code_length)
     else
-      guess = guess.chars
+      guess.chars
     end
   end
 end

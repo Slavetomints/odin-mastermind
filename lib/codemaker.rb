@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # contains the logic for the codemaker
 class Codemaker
   def initialize(code_length)

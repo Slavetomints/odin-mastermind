@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'board'
 require_relative 'codemaker'
 require_relative 'codebreaker'
@@ -21,9 +23,4 @@ class Game
 
     @board.update_board(guess, @code)
   end
-end
-
-game = Game.new
-loop do
-  game.play_game
 end
