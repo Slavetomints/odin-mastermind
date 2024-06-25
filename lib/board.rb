@@ -16,10 +16,12 @@ class Board
 
   def show_board
     i = 0
+    puts "-------------------"
     while i < @number_of_turns
       puts "#{@guess_board[i]}  #{@result_board[i]}"
       i += 1
     end
+    puts "-------------------"
   end
 
   def update_board(guess, code)
@@ -37,7 +39,7 @@ class Board
 
   def update_results(guess, code)
     code_length = code.length
-    result_array = Array.new(code_length, nil)
+    result_array = Array.new(code_length)
     matched_indices = Array.new(code_length, false)
 
     guess.each_with_index do |guess_color, guess_color_index|

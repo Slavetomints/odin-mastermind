@@ -29,9 +29,6 @@ class Game
 
   def play_game
       guess = @codebreaker.guess_code(@code_length)
-      puts guess
-      puts guess.class
-      
       return unless @codemaker.check_guess(guess, @code) == false
       @board.update_board(guess, @code)
   end

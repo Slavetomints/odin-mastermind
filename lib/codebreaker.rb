@@ -15,7 +15,6 @@ class Codebreaker
   end
 
   def guess_code(code_length)
-    puts 'guessing the code'
     case @mode
     when 'human'
       puts "\nPlease make a guess #{@name}"
@@ -31,21 +30,16 @@ class Codebreaker
         guess.chars
       end
     when 'computer'
-      puts 'computer is guessing the code'
       colors = %w[r o g b p]
-      guess = []
-      code_length.to_i.times do
-        puts code_length
-        puts 'computer is makin ghte guess'
+      guess = Array.new
+      i = 0
+      while i < code_length do
         sample = colors.sample
         guess << sample
         colors.delete(sample)
-        puts guess
-      puts 'returning the guess'
-      puts guess
-      puts guess.class
-      return guess
+        i += 1
       end
+      guess
     end
   end
 end
